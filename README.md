@@ -3,7 +3,8 @@
 # This is a simple backup project. develop via  bash 
 it gets  some Options, source and destination to create you backup file
 
-#How to use
+# How To Use
+
 git clone <repository>
 ./backup 
 ./backup -v --date date /var/log /tmp/backup.tar.gz
