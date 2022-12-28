@@ -63,8 +63,12 @@ if [[  $2 != *.tar.gz ]]; then
     echo "ERROR: $2 should be a file with .tar.gz extention"
 fi
 
-BACKUP_FILENAME="${ADD_DATE_TO_FILENAME}-${2}"
-#echo $BACKUP_FILENAME
+FILENAME="${2##*/}"      #or use filename=$(basename -- "$2")                
+DESTINATION="${2:0:${#2} - ${#FILENAME}}"
+BACKUP_FILENAME="$DESTINATION${ADD_DATE_TO_FILENAME}-$FILENAME"
+
+# echo $DESTINATION
+# echo $BACKUP_FILENAME
 if [[ $VERBOSE_MODE -eq 0 ]]; then
     tar -zvcf $BACKUP_FILENAME $1 &> /dev/null
 else
